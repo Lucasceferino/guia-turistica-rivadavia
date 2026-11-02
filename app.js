@@ -1,6 +1,3 @@
-/ Guía Turística Rivadavia
-// Carga los distritos publicados desde Supabase
-
 document.addEventListener("DOMContentLoaded", async () => {
   const contenedor = document.getElementById("districts-list");
 
@@ -12,6 +9,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   contenedor.innerHTML = "<p>Cargando distritos...</p>";
 
   try {
+    if (!window.supabase || !window.supabaseClient) {
+      throw new Error("No se pudo inicializar la conexión con Supabase.");
+    }
+
     const { data, error } = await window.supabaseClient
       .from("districts")
       .select("id, name, slug, summary")
@@ -21,7 +22,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (error) throw error;
 
     if (!data || data.length === 0) {
-      contenedor.innerHTML = "<p>Próximamente agregaremos información turística.</p>";
+      contenedor.innerHTML =
+        "<p>Próximamente agregaremos información turística.</p>";
       return;
     }
 
@@ -44,7 +46,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     console.log("Distritos cargados:", data.length);
-
   } catch (error) {
     console.error("Error al cargar distritos:", error);
     contenedor.innerHTML =
