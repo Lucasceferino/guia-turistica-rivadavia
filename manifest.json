@@ -1,0 +1,13 @@
+{
+  "name": "Guía Turística Rivadavia",
+  "short_name": "Rivadavia",
+  "description": "Descubrí los atractivos turísticos de Rivadavia, Mendoza.",
+  "lang": "es-AR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f8f5",
+  "theme_color": "#176b45",
+  "icons": []
+}
