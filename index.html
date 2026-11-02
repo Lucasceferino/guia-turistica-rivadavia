@@ -1,14 +1,15 @@
-TYPE html>
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#176b45">
   <meta name="description" content="Descubrí los atractivos turísticos de Rivadavia, Mendoza.">
+  <link rel="manifest" href="./manifest.json">
   <title>Guía Turística Rivadavia</title>
   <style>
-    * { box-sizing: border-box; }<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./supabase.js"></script><script src="./app.js"></script>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -21,8 +22,6 @@ TYPE html>
       padding: 28px 18px;
       text-align: center;
     }
-    header h1 { margin: 0 0 10px; }
-    header p { margin: 0; }
     main {
       max-width: 850px;
       margin: 25px auto;
@@ -41,12 +40,14 @@ TYPE html>
       grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
       gap: 10px;
     }
-    .district {
+    .district-card {
       background: #e8f3eb;
       border-radius: 9px;
       padding: 13px;
-      text-align: center;
-      font-weight: bold;
+    }
+    .district-card h3 {
+      margin: 0 0 8px;
+      color: #176b45;
     }
     footer {
       text-align: center;
@@ -70,22 +71,10 @@ TYPE html>
       </p>
     </section>
 
-    <section>
-      <h2>Conocé nuestros distritos</h2>
-      <div class="districts">
-        <div class="district">Ciudad</div>
-        <div class="district">Mundo Nuevo</div>
-        <div class="district">Santa María de Oro</div>
-        <div class="district">La Central</div>
-        <div class="district">El Mirador</div>
-        <div class="district">Los Campamentos</div>
-        <div class="district">San Isidro</div>
-        <div class="district">Los Huarpes</div>
-        <div class="district">La Libertad</div>
-        <div class="district">La Reducción</div>
-        <div class="district">Medrano</div>
-        <div class="district">Los Árboles</div>
-        <div class="district">Andrade</div>
+    <section class="districts-section">
+      <h2>Descubrí los distritos de Rivadavia</h2>
+      <div id="districts-list" class="districts">
+        <p>Cargando distritos...</p>
       </div>
     </section>
 
@@ -101,10 +90,15 @@ TYPE html>
   <footer>
     Guía Turística Rivadavia · Mendoza · Argentina
   </footer>
-</body><section class="districts-section">
-  <h2>Descubrí los distritos de Rivadavia</h2>
-  <div id="districts-list">
-    <p>Cargando distritos...</p>
-  </div>
-</section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./supabase.js"></script>
+  <script src="./app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js");
+    }
+  </script>
+</body>
 </html>
+
