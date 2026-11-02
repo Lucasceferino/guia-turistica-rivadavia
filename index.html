@@ -1,103 +1,156 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#176b45">
-  <meta name="description" content="Descubrí los atractivos turísticos de Rivadavia, Mendoza.">
-  <link rel="manifest" href="./manifest.json">
+
   <title>Guía Turística Rivadavia</title>
+
+  <meta
+    name="description"
+    content="Descubrí los paisajes, lugares y atractivos turísticos de Rivadavia, Mendoza."
+  >
+
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      color: #24352b;
       background: #f5f8f5;
+      color: #26352c;
     }
+
     header {
       background: #176b45;
       color: white;
-      padding: 28px 18px;
       text-align: center;
+      padding: 42px 20px;
     }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 17px;
+    }
+
     main {
-      max-width: 850px;
-      margin: 25px auto;
-      padding: 0 16px;
+      max-width: 1000px;
+      margin: auto;
+      padding: 25px 16px;
     }
+
     section {
-      background: white;
-      border-radius: 14px;
-      padding: 22px;
-      margin-bottom: 18px;
-      box-shadow: 0 2px 10px #0000000d;
+      margin-bottom: 35px;
     }
-    h2 { color: #176b45; }
+
+    h2 {
+      color: #176b45;
+      font-size: 24px;
+    }
+
+    .intro {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
     .districts {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
     }
+
     .district-card {
-      background: #e8f3eb;
-      border-radius: 9px;
-      padding: 13px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 9px rgba(0, 0, 0, 0.08);
     }
+
     .district-card h3 {
-      margin: 0 0 8px;
       color: #176b45;
+      margin-top: 0;
     }
+
+    .district-card p {
+      line-height: 1.5;
+    }
+
     footer {
+      background: #176b45;
+      color: white;
       text-align: center;
-      padding: 25px;
-      color: #607267;
+      padding: 22px;
+      margin-top: 35px;
     }
   </style>
 </head>
+
 <body>
+
   <header>
     <h1>Guía Turística Rivadavia</h1>
-    <p>Descubrí, recorré y disfrutá Rivadavia, Mendoza</p>
+    <p>Descubrí Rivadavia, Mendoza</p>
   </header>
 
   <main>
     <section>
-      <h2>¡Bienvenidos!</h2>
-      <p>
-        Explorá los paisajes, la cultura, la gastronomía
-        y los atractivos turísticos de nuestro departamento.
+      <h2>Bienvenidos a Rivadavia</h2>
+      <p class="intro">
+        Conocé nuestros distritos, paisajes, cultura,
+        historia y atractivos turísticos. Explorá todo
+        lo que Rivadavia tiene para ofrecer.
       </p>
     </section>
 
-    <section class="districts-section">
-      <h2>Descubrí los distritos de Rivadavia</h2>
+    <section>
+      <h2>Nuestros distritos</h2>
       <div id="districts-list" class="districts">
         <p>Cargando distritos...</p>
       </div>
     </section>
 
     <section>
-      <h2>Próximamente</h2>
+      <h2>Descubrí nuestros atractivos</h2>
       <p>
-        Lugares turísticos, bodegas, eventos, gastronomía,
-        alojamientos, mapas y recorridos.
+        Próximamente encontrarás lugares turísticos,
+        actividades, eventos y recorridos para disfrutar
+        de Rivadavia.
       </p>
     </section>
   </main>
 
   <footer>
-    Guía Turística Rivadavia · Mendoza · Argentina
+    <p>Guía Turística Rivadavia · Mendoza, Argentina</p>
   </footer>
 
+  <!-- Conexión con Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="./supabase.js"></script>
   <script src="./app.js"></script>
+
+  <!-- Registro de la aplicación PWA -->
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register(".sw.js");
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .catch(error => console.error("Error PWA:", error));
+      });
     }
   </script>
+
 </body>
 </html>
+
 
