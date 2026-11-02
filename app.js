@@ -1,4 +1,4 @@
-// Guía Turística Rivadavia
+/ Guía Turística Rivadavia
 // Carga los distritos publicados desde Supabase
 
 document.addEventListener("DOMContentLoaded", async () => {
