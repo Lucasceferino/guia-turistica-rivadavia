@@ -9,4 +9,4 @@ window.supabaseClient = window.supabase.createClient(
   SUPABASE_PUBLISHABLE_KEY
 );
 
-console.log("Conexión con Supabase preparada");
+console.log("Conexión con Supabase preparad
